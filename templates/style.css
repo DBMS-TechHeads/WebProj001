@@ -1,0 +1,287 @@
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body{
+font: 1.6rem Helvetica;
+height: 100vh;
+margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'navbar'
+      'main'
+      'footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    height: 100%;
+  }
+
+.navbar{
+    grid-area: navbar;
+    background-color: #203040;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.brand a{
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+.others a{
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-right: 0.5rem;
+  text-decoration:none;
+
+}
+
+.others button{
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-right: 0.5rem;
+  background-color: #203040;
+  border: none;
+  outline: none;
+  
+}
+
+.main{
+  grid-area: main;
+}
+
+.main img{
+  width: 100%;
+  height: 30rem;
+}
+
+.centered h1{
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+}
+
+.centered p{
+  color: white;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+
+
+.sidebar h2{
+  text-transform:uppercase;
+  text-align: center;
+  line-height: 70px;
+  color: #00ff00;
+}
+
+.sidebar input[type="text"],.sidebar input[type="password"]{
+  border:0;
+  background: #ff1372;
+  display:block;
+  margin: 20px auto;
+  text-align: center;
+  border:2px solid skyblue;
+  padding:14px 10px;
+  width:100px;
+  outline:none;
+  color:rgb(39, 39, 39);
+  border-radius: 24px;
+  transition:0.25s;
+  cursor: pointer;
+}
+::placeholder {
+  color: #2d2b3a;
+  opacity: 5;
+}
+.sidebar input[type="text"]:focus,.sidebar input[type="password"]:focus{
+  width:200px;
+  border-color:green;
+
+}
+.sidebar input[type="submit"]{
+  border:0;
+  background: black;
+  display:block;
+  margin: 20px auto;
+  text-align: center;
+  border:2px solid green;
+  padding:14px 20px;
+  width:100px;
+  outline:none;
+  color:white;
+  border-radius: 24px;
+  transition:0.25s;
+  cursor : pointer;
+}
+.sidebar input[type="submit"]:hover{
+  background: green;
+}
+.sidebar a{
+  padding-left: 10px;
+  text-decoration:none;
+  font-size: 15px;
+  line-height:20px;
+  color: rgb(175, 233, 175);
+}
+.sidebar a:hover{
+  color:yellowgreen;
+}
+
+.sidebar{
+  padding-bottom: 5px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color:#936abd;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 50px;
+
+}
+
+
+.sidebar .closebtn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.content h2{
+  padding-left: 45%;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.products li {
+  list-style-type: none;
+  padding: 1rem;
+  flex: 0 1 34rem;
+  margin: 2rem;
+  height: 40rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 1rem;
+  background-color:	#D3D3D3;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.paint-imag {
+  max-width: 20rem;
+  max-height: 20rem;
+}
+.paint-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.paint-price {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* .aboutus{
+  margin-top: 5rem;
+  width: 100%;
+  height: 30rem;
+  background-color: #1b3752;
+}
+
+.aboutus p{
+  color: white;
+  padding-left: 45%;
+} */
+
+
+footer{
+  width: 100%;
+  height: 35rem;
+  background: #2b2d2ec5;;
+ }
+
+ .inner-footer{
+   padding: 0;
+   width: 100%;
+   height: 30rem;
+   
+ }
+ .footer-header{
+   width: 100%;
+   height: 10rem;
+   text-align: center;
+ }
+ 
+li{
+  list-style-type: none;
+ }
+
+ a{
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+ }
+
+.footer-col1{
+  width:33%;
+  height: 20rem;
+  justify-content: space-between;
+  display:inline-block;
+  vertical-align:middle;
+  text-align: center;
+  
+ }
+ .footer-col2{
+  width:30%;
+  height: 20rem;
+  justify-content: space-between;
+  display:inline-block;
+  vertical-align:middle;
+  text-align: center;
+ }
+ .footer-col3{
+  width:33%;
+  height: 20rem;
+  justify-content: space-between;
+  display:inline-block;
+  vertical-align:middle;
+  text-align: center;
+  
+ }
+ .footer-bottom{
+  width: auto;
+  height: 2rem;
+  text-align: center;
+  padding: 10px;
+  background: #3d545f;
+  color: #fff;
+  font-size: 12px;
+ }

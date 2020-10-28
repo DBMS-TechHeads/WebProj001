@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload painting page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="file:///E:/fontawesome/css/all.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <div class="grid-container">
+      <navbar class="navbar">  
+        <div class="brand"><a href="">Paintorzo</a></div>
+        <div class="others"><ul>
+            <li><a herf="#">Home</a></li>
+            <li><a herf="#">service</a></li>
+            <li><a herf="#">Contact Us</a></li>
+            <li><a herf="#">Sign Out</a></li></ul>
+        </div>
+    </navbar>
+    <main class="main">
+      <h2>Upload Painting</h2>
+      <div class="wrapper">
+        <div class="image">
+          <img src="" alt="" class="imagep">
+        </div>
+        <div class="content">
+          <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+          <div class="text">No file chosen, yet!</div>
+        </div>
+          <div id="cancel-btn"><i class="fas fa-times"></i></div>
+          <div class="file-name">File name here</div>
+      </div>
+      <button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+      <input id="default-btn" type="file" hidden><br/>
+      <div class="owner">
+        <form action="" className="form">
+          <label for ="pname">Painting Name</label>
+            <input type="text" placeholder="Painting Name"><br/> 
+           <label for ="name">Name of the Artist</label>
+            <input type="text" placeholder="ArtistName">
+            <label for ="Themes">Themes</label>
+            <select id="Themes">
+            <option value="Conflict and Adversity">Conflict and Adversity</option>
+            <option value="Freedom and Social Change">Freedom and Social Change</option>
+            <option value="Heroes and Leaders">Heroes and Leaders</option>
+            <option value="Humans and the Environment">Humans and the Environment</option>
+            </select>
+            <label for ="rentalcost">Rental Cost</label>
+            <input type="number" placeholder="in Rupees"><br/>
+            <label for ="Desc">Description</label>
+            <input type="text" placeholder="Description"><br/>
+            <input type="submit" placeholder="Submit">
+            
+        </form>
+    </div>
+    </main>
+    <script src="app.js"></script>
+    <footer>
+      <div class="inner-footer">
+          <div class="footer-header">
+
+              <h1> First website..</h1>
+              <p>
+                  Happy to start out painting business online , made easy to contact with all the other 
+                  business people.
+              </p>
+          </div>
+          <div class="footer-col1">
+              <h2>Quick Links</h2>
+                  <ul>
+                      <a href=""> <li> Home </li></a>
+                      <a href=""> <li> About us </li></a>
+                      <a href=""> <li> contact us </li></a>
+                      <a href=""> <li> feedback </li></a>
+                  </ul>
+          </div>
+          <div class="footer-col2">
+                  <h2>Paintings</h2>
+                      <ul>
+                          <a href=""> <li> Indian </li></a>
+                          <a href=""> <li> Us </li></a>
+                          <a href=""> <li> Australia </li></a>
+                          <a href=""> <li> Europe </li></a>
+                      </ul>
+          </div>
+          <div class="footer-col3">
+                      <h2>Contact us</h2>
+                       <ul>
+                             <li><a href="tel:123-456-7890">123-456-7890<span></span></li> </a>
+                              <li><a href="https://www.instagram.com/livingindiatv/">instagram<span></span></li></a>
+                              <li><a href="https://youtube.com">youtube<span></span></a></li>
+                              <li><a href="https://twitter.com/livingindiatv">twitter<span></span></a></li>
+                              <li><a href="https://www.facebook.com/livingindiatv/">facebook<span></span></a></li>
+                      </ul>
+          </div>
+             
+      </div>
+      <div class="footer-bottom">
+          Copyright &copy; Painting is not a joke its like profession.
+      </div>
+    </footer> 
+   </div>
+  </body>
+</html>

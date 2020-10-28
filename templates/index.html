@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="grid-container">
+        
+        <navbar class="navbar">  
+            <div class="brand"><a href="">Paintorzo</a></div>
+            <div class="others"><a href="#aboutussec">About US</a><button onclick="openNav()">SignIn</button></div>
+        </navbar>
+        
+        <aside class="sidebar" id="mysidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <h2>Sign In</h2>
+            <form action="">
+                <input type="text" placeholder="Username">
+                <input type="password" name="" placeholder="Password" id="">
+                <input type="submit"><br>
+                <a href="#">Forgot Password?</a><br>
+                <a href="#">Create an account</a>
+            </form>
+        </aside>
+        
+        <main class="main">
+            <img src="images/pic.jpg" alt="pic">
+            <div class="centered"><h1>Paintorzo</h1><p>"The place where you can find the finest paintings by famous artists at your finger tips.."</p></div>
+            <div class="content">
+                <h2>Top Paintings</h2>
+                <ul class="products">
+                    <li>
+                        <div class="product">
+                        <img src="images/painting1.jpg" alt="painting1" class="paint-img">
+                        <div class="paint-name">pp</div>
+                        <div class="paint-price">Rs.4000</div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="product">
+                        <img src="images/painting1.jpg" alt="painting1" class="paint-img">
+                        <div class="paint-name">pp</div>
+                        <div class="paint-price">Rs.4000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                        <img src="images/painting1.jpg" alt="painting1" class="paint-img">
+                        <div class="paint-name">pp</div>
+                        <div class="paint-price">Rs.4000</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                        <img src="images/painting1.jpg" alt="painting1" class="paint-img">
+                        <div class="paint-name">pp</div>
+                        <div class="paint-price">Rs.4000</div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+           
+        </main>
+
+
+
+        <footer>
+                <div class="inner-footer">
+                    <div class="footer-header">
+                        <h1> First website..</h1>
+                        <p>
+                            Happy to start out painting business online , made easy to contact with all the other 
+                            business people.
+                        </p>
+                    </div>
+                    <div class="footer-col1">
+                        <h2>Quick Links</h2>
+                            <ul>
+                                <a href=""> <li> Home </li></a>
+                                <a href=""> <li> About us </li></a>
+                                <a href=""> <li> contact us </li></a>
+                                <a href=""> <li> feedback </li></a>
+                            </ul>
+                    </div>
+                    <div class="footer-col2">
+                            <h2>Paintings</h2>
+                                <ul>
+                                    <a href=""> <li> Indian </li></a>
+                                    <a href=""> <li> Us </li></a>
+                                    <a href=""> <li> Australia </li></a>
+                                    <a href=""> <li> Europe </li></a>
+                                </ul>
+                    </div>
+                    <div class="footer-col3">
+                                <h2>Contact us</h2>
+                                 <ul>
+                                       <li><a href="tel:123-456-7890">123-456-7890<span></span></li> </a>
+                                        <li><a href="https://www.instagram.com/livingindiatv/">instagram<span></span></li></a>
+                                        <li><a href="https://youtube.com">youtube<span></span></a></li>
+                                        <li><a href="https://twitter.com/livingindiatv">twitter<span></span></a></li>
+                                        <li><a href="https://www.facebook.com/livingindiatv/">facebook<span></span></a></li>
+                                </ul>
+                    </div>
+                       
+                </div>
+                <div class="footer-bottom">
+                    Copyright &copy; Painting is not a joke its like profession.
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script>
+    function openNav() {
+  document.getElementById("mysidebar").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mysidebar").style.width = "0";
+}
+</script>
+</html>
