@@ -10,6 +10,7 @@ function CartScreen(props){
     // const {cartItems} = cart;
     let [cartItems, setItem] = useState([]);
     const week  = props.location.search? Number(props.location.search.split("=")[1]):1;
+    
 
     const removefromcart=(productid)=>{
         console.log(productid);

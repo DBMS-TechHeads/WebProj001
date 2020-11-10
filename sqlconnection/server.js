@@ -9,6 +9,22 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+var USRname;
+var Type;
+var ID;
+let date_ob = new Date();
+
+// adjust 0 before single digit date
+let date = ("0" + date_ob.getDate()).slice(-2);
+
+// current month
+let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+// current year
+let year = date_ob.getFullYear();
+
+// prints date in YYYY-MM-DD format
+var rentdate = year + "-" + month + "-" + date;
 
 var mysqlConnection = mysql.createConnection({
     host: 'localhost',
@@ -72,7 +88,7 @@ mysqlConnection.connect((err)=> {
              }
            else{
             console.log(type); if(type==="Rent Paintings"){
-                mysqlConnection.query("INSERT INTO customer (username,password,Fname,LName,phonenumber,address,dob,category,emailid) values (?,?,?,?,?,?,?,?,?)",[username,password,Firstname,Lastname,phno,address,dob,category,emailid],
+                mysqlConnection.query("INSERT INTO customer (username,password,Fname,LName,phonenumber,address,dob,category,emailid,type) values (?,?,?,?,?,?,?,?,?,'Customer')",[username,password,Firstname,Lastname,phno,address,dob,category,emailid],
             (err,result)=>{
                 console.log(err);
                 if(result.length>0){
@@ -84,7 +100,7 @@ mysqlConnection.connect((err)=> {
             });
             }
             else{
-                mysqlConnection.query("INSERT INTO owner (username,password,FName,LName,phonenumber,address,dob,income,commission,emailid) values (?,?,?,?,?,?,?,0,0.40,?)",[username,password,Firstname,Lastname,phno,address,dob,emailid],
+                mysqlConnection.query("INSERT INTO owner (username,password,FName,LName,phonenumber,address,dob,income,commission,emailid,type) values (?,?,?,?,?,?,?,0,0.40,?,'Owner')",[username,password,Firstname,Lastname,phno,address,dob,emailid],
             (err,result)=>{
                 console.log(err);
                 if(result.length>0){
@@ -119,6 +135,10 @@ mysqlConnection.connect((err)=> {
                      res.send({err: err});
                  } 
                  if(result.length>0){
+                    USRname = username;
+                    Type = result[0].type;
+                    ID = result[0].custid;
+                    console.log(ID);
                      res.send(result)
                  }
                  else{
@@ -129,6 +149,10 @@ mysqlConnection.connect((err)=> {
                             res.send({err: err});
                         } 
                         if(result.length>0){
+                            USRname = username;
+                            Type = result[0].type;
+                            ID = result[0].ownerid;
+                            console.log(ID);
                             res.send(result)
                         }
                         else{
@@ -153,7 +177,7 @@ mysqlConnection.connect((err)=> {
 
             }
             else{
-           mysqlConnection.query("INSERT INTO painting (paintingname,artistname,theme,rentalcost,image,description,hired,monthsnothired) values (?,?,?,?,?,?,'n',0)",[paintingname,artistname,theme,rentalcost,image,description],
+           mysqlConnection.query("INSERT INTO painting (paintingname,artistname,theme,rentalcost,image,description,hired,monthsnothired,ownerid) values (?,?,?,?,?,?,'n',0,?)",[paintingname,artistname,theme,rentalcost,image,description,ID],
            (err,result)=>{
                console.log(err);
                if(result.length>0){
@@ -165,6 +189,65 @@ mysqlConnection.connect((err)=> {
            });
         }
        });
+
+       app.get('/ownedpaintings',(req,res)=>{
+        mysqlConnection.query('SELECT * FROM painting where ownerid='+ID, (err, rows, fields) => {
+            if (!err)
+            res.json(rows);
+            else
+            console.log(err);
+            })
+    });
+
+    app.get('/rentpainting',(req,res)=>{
+        mysqlConnection.query('SELECT * FROM painting where hired="y" and ownerid='+ID, (err, rows, fields) => {
+            if (!err)
+            res.json(rows);
+            else
+            console.log(err);
+            })
+    });
+
+    app.get('/paintinghired',(req,res)=>{
+        mysqlConnection.query('SELECT * FROM hiringinfo where Returned="n" and custid='+ID, (err, rows, fields) => {
+            if (!err)
+            res.json(rows);
+            else
+            console.log(err);
+            })
+    });
+
+    app.post('/rent',(req,res)=>{
+        const paintingid=req.body.paintingid;
+        const returndate= req.body.returndate;
+        const custid = ID;
+        if(returndate==""){
+            res.send({emptyfields:"Fill all fields!!"});
+        }
+        else{
+            mysqlConnection.query("INSERT INTO hiringinfo (rentdate,returndate,paintingid,custid,Returned) values (?,?,?,?,'n')",[rentdate,returndate,paintingid,custid],
+            (err,result)=>{
+                console.log(err);
+                if(result.length>0){
+                    res.send(result)
+                }
+                else{
+                    res.send({messages:"Uploaded Successfully!"})
+                }
+            });
+            mysqlConnection.query("UPDATE painting set hired='y' where paintingid=?",[paintingid],
+            (err,result)=>{
+                // console.log(err);
+                // if(result.length>0){
+                //     res.send(result)
+                // }
+                // else{
+                //     res.send({messages:"Uploaded Successfully!"})
+                // }
+            });
+         }
+    
+    });
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}..`));

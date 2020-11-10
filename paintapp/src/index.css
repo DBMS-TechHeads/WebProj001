@@ -253,7 +253,12 @@ margin: 0;
 
 /* Signin */
 .Login{
-  color: white;
+  padding-top: 1rem;
+  font-size: 2rem;
+  background: #E27D60;
+  color: yellow;
+  height: 5rem;
+  padding-left: 10rem;
 }
 .closebtn{
   color: rosybrown;
@@ -325,7 +330,7 @@ margin: 0;
   text-decoration: none;
 
 }
-.sidebar #submit{
+.sidebar #submit,#logout{
   border:0;
   background: black;
   display:block;
@@ -370,6 +375,15 @@ margin: 0;
   transition: 0.5s;
   padding-top: 50px;
 
+}
+
+.Profile{
+  background: #C38D9E;
+  padding: 1rem;
+}
+
+.Profile h3, h4{
+  color: #2C3531;
 }
 
 .content h2{

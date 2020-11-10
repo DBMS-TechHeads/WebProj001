@@ -6,6 +6,8 @@ import Productscreen from './screens/Productscreen';
 import CreateAccount from './screens/CreateAccount';
 import CartScreen from './screens/CartScreen';
 import UploadPainting from './screens/UploadPainting';
+import OwnedPaintings from './screens/OwnedPaintings';
+import RentPainting from './screens/RentPainting';
 import Categories from './screens/Categories';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,15 +17,27 @@ import Axios from 'axios';
 
 
 import { FaInstagramSquare, FaFacebook, FaGithub, FaTwitter, FaHome, FaSignInAlt, FaShoppingCart,FaInfoCircle} from 'react-icons/fa';
-import Category from './screens/Categories';
+import PaintingHired from './screens/PaintingsHired';
+
+
+
 
 
 function App() {
   const [username,setusername]=useState("");
   const [password,setpassword]=useState("");
   const [loginstatus,setloginstatus]=useState("");
+  const [IDstatus,setIDstatus]=useState("");
+  const[Fnamestatus,setFnametatus] = useState("");
+  const[Lnamestatus, setLnamestatus] = useState("");
+  const[addStatus,setAddressstatus] = useState("");
+  const[PHNUMstatus,setPHNUMstatus] = useState("");
+  const[emailStatus,setemailstatus] = useState("");
+  const[TypeStatus,setTYPEstatus] = useState("");
+  const[CATStatus,setCATstatus] = useState("");
   
-  const login = () =>{
+  
+      const login = () =>{
     Axios.post('http://localhost:8080/login',{
       username:username,
       password:password,
@@ -34,13 +48,25 @@ function App() {
     setloginstatus(response.data.messages)
     }
     else{
-      setloginstatus(response.data[0].username)
+      setloginstatus(response.data[0].username);
+      setIDstatus(response.data[0].type);
+      setFnametatus(response.data[0].Fname);
+      setLnamestatus(response.data[0].Lname);
+      setAddressstatus(response.data[0].address);
+      setPHNUMstatus(response.data[0].phonenumber);
+      setemailstatus(response.data[0].emailid);
+      setTYPEstatus(response.data[0].type);
+      if(response.data[0].type=="Customer"){
+        setCATstatus(response.data[0].category);
+
+      }
     }
   });
   };
 
   const Logout = ()=>{
     setloginstatus("");
+    setIDstatus("");
   }
 
   const openNav = ()=>{
@@ -69,7 +95,11 @@ function App() {
     <div className="grid-container">
         <div className="navbar">  
             <div className="brand"><img src="/images/logo.png"/><Link to="/">Paintorzo</Link></div>
-            <div className="others1"><a href="/"><FaHome/> Home</a><a href="#aboutussec" onClick={toggle}><FaInfoCircle/> About Us</a><a href="/"><FaShoppingCart/> Cart</a><button onClick={openNav}><FaSignInAlt/> Sign In</button></div>
+            <div className="others1">
+                <Link to="/"><FaHome/> Home</Link>
+                <a href="#aboutussec" onClick={toggle}><FaInfoCircle/> About Us</a>
+                {/* <Link to="/"><FaShoppingCart/> Cart</Link> */}
+                <button onClick={openNav}><FaSignInAlt/> Sign In</button></div>
         </div>
         
         <div className="sidebar" id="mysidebar">
@@ -92,7 +122,41 @@ function App() {
                     :
                     <div>
                     <h3 className="Login">Hi {loginstatus}</h3>
-                    <button onClick={Logout}>LogOut</button>
+                    {IDstatus==="Owner"?
+                    <div>
+                    <Link to="/uploadpainting">Upload Painting</Link><br/>
+                    <Link to="/ownedpaintings">Owned Paintings</Link><br/>
+                    <Link to="/rentpainting">Paintings Rented</Link><br/>
+                    <br/>
+                      <p className="Profile">
+                      <h3>Profile</h3><br/>
+                      <h4>First Name: {Fnamestatus}</h4><br/>
+                      <h4>Last Name: {Lnamestatus}</h4><br/>
+                      <h4>Address: {addStatus}</h4><br/>
+                      <h4>Phone Number: {PHNUMstatus}</h4><br/>
+                      <h4>Email ID: {emailStatus}</h4><br/>
+
+                      </p>
+                    </div>
+                      :
+                    <div>
+                      <br/>
+                      <Link to="/Membership">Membership categories</Link><br/>
+                      <Link to="/paintinghired">Paintings Hired</Link>
+                      <br/>
+                      <br/>
+                      <p className="Profile">
+                      <h3>Profile</h3><br/>
+                      <h4>First Name: {Fnamestatus}</h4><br/>
+                      <h4>Last Name: {Lnamestatus}</h4><br/>
+                      <h4>Address: {addStatus}</h4><br/>
+                      <h4>Phone Number: {PHNUMstatus}</h4><br/>
+                      <h4>Email ID: {emailStatus}</h4><br/>
+                      <h4>Membership Type: {CATStatus}</h4><br/>
+                      </p>
+                    </div>
+                    }
+                    <button id="logout" onClick={Logout}><a href="/">LogOut</a></button>
                     </div>
               }
         </div>
@@ -103,8 +167,11 @@ function App() {
                 <Route path="/painting/:id" component={Productscreen}/>
                 <Route path="/" exact={true} component={Homescreen}/>
                 <Route path ="/signup" component={CreateAccount}/>
-                <Route path="/cart/:id?" component={CartScreen}/>
+                {/* <Route path="/cart/:id?" component={CartScreen}/> */}
                 <Route path="/uploadpainting" component={UploadPainting}/>
+                <Route path="/ownedpaintings" component={OwnedPaintings}/>
+                <Route path="/rentpainting" component={RentPainting}/>
+                <Route path="/paintinghired" component={PaintingHired}/>
                 <Route path="/Membership" component={Categories}/>
             </div>
         </main>    
@@ -143,10 +210,10 @@ function App() {
           <div className="col-xs-6 col-md-3">
             <h6>Quick Links</h6>
             <ul className="footer-links">
-              <li><a href="">Home</a></li>
-              <li><a href="">AboutUs</a></li>
-              <li><a href="">ContactUs</a></li>
-              <li><a href="">Feedback</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="#aboutussec" onClick={toggle}>AboutUs</Link></li>
+              <li><Link to="">ContactUs</Link></li>
+              <li><Link to="">Feedback</Link></li>
               
             </ul>
           </div>
