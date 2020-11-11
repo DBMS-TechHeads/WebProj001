@@ -26,17 +26,18 @@ function OwnedPaintings(props){
 
         <h2>Paintings Owned</h2>
           
-        <ul className="products">
+        <ul className="ownedpainting">
                 {
                     products.map(product=>
                     <li>
-                    <div className="product">
+                    {/* <div className="product"> */}
                     <img src={product.image} alt="painting1"/>
                    <div className="paint-name">{product.paintingname}</div>
                     <div className="paint-artist">Artist: {product.artistname}</div>
                     <div className="paint-theme">Theme: {product.theme}</div>
                     <div className="paint-price">Rs {product.rentalcost}</div>
-                    </div>
+                    <div className="paint-theme">Hired: {product.hired}</div>
+                    {/* </div> */}
                 </li>
                         )
                 }

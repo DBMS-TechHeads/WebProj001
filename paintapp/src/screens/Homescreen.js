@@ -8,6 +8,7 @@ import axios from 'axios';
 function Homescreen(props){
 
   const [products, setProduct] = useState([]);
+  const [theme, setsearch] = useState([""]);
 
   useEffect(()=>{
     const fetchData = async() =>{
@@ -72,7 +73,8 @@ function Homescreen(props){
       
     <br/>
         <div className="centered"><h1>Paintorzo</h1><p>"The place where you can find the finest paintings by famous artists at your finger tips.."</p></div>
-        <h2>Top Paintings</h2>
+        <h2>Painting Gallery</h2>
+        
         <ul className="products">
                 {
                     products.map(product=>

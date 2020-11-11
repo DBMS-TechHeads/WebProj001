@@ -11,7 +11,8 @@ function Productscreen(props){
     const [products, setProduct] = useState([]);
     const [hired, setHired] = useState("");
     const [Rdate, setdate] = useState("");
-
+    const [pname, setPName] = useState("");
+    const [image, setPimage] = useState("");    
 
   useEffect(()=>{
     const fetchData = async() =>{
@@ -19,6 +20,8 @@ function Productscreen(props){
       console.log(data[0]);
       setProduct(data);
       setHired(data[0].hired);
+      setPName(data[0].paintingname);
+      setPimage(data[0].image);
     }
     fetchData();
     return ()=>{
@@ -37,7 +40,9 @@ function Productscreen(props){
     const rent = () =>{
         Axios.post('http://localhost:8080/rent',{
             returndate:Rdate,
-            paintingid:props.match.params.id
+            paintingid:props.match.params.id,
+            pname:pname,
+            image:image
             
         }).then((response) => {
             if(response.data.messages){

@@ -401,7 +401,7 @@ margin: 0;
   padding: 1rem;
   flex: 0 1 34rem;
   margin: 2rem;
-  height: 40rem;
+  height: 45rem;
   border: 0.1rem #c0c0c0 solid;
   border-radius: 1rem;
   background-color:	#D3D3D3;
@@ -925,4 +925,77 @@ font-size: 2rem;
   outline:none;
   color:black;
   border-radius: 24px;
+}
+
+/* PaintingsHired-------------------------------------------------------------------------------------------------- */
+
+.bill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.bill img{
+  width: 100%;
+  height: 25rem;
+  margin-top: 1rem;
+  
+}
+.bill li {
+  list-style-type: none;
+  padding: 1rem;
+  flex: 0 1 34rem;
+  margin: 2rem;
+  height: 42rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 1rem;
+  background-color:	#ffffff;
+}
+.billno{
+  color:black;
+  font-size: 2rem;
+}
+.paint{
+  color:black;
+  font-size: 1.5rem;
+}
+
+.bill .return{
+  margin-top: 1rem;
+  background-color: rgb(197, 36, 36);
+  color: white;
+}
+
+/* OwnerPainting------------------------------------------------------------- */
+
+.ownedpainting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ownedpainting img{
+  width: 100%;
+  height: 25rem;
+  margin-top: 1rem;
+  
+}
+.ownedpainting li {
+  list-style-type: none;
+  padding: 1rem;
+  flex: 0 1 34rem;
+  margin: 2rem;
+  height: 40rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 1rem;
+  background-color:	#b8b8b896;
+}
+.paint-artist {
+  color:black;
+  font-size: 1.5rem;
+}
+
+ .paint-theme {
+  color:black;
+  font-size: 1.5rem;
 }

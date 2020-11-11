@@ -18,6 +18,7 @@ import Axios from 'axios';
 
 import { FaInstagramSquare, FaFacebook, FaGithub, FaTwitter, FaHome, FaSignInAlt, FaShoppingCart,FaInfoCircle} from 'react-icons/fa';
 import PaintingHired from './screens/PaintingsHired';
+import HiringHistory from './screens/HiringHistory';
 
 
 
@@ -116,8 +117,8 @@ function App() {
                 setpassword(e.target.value);
               }}/>
                     <button id="submit" onClick={login}>Submit</button><br/>
-                    <a href="#">Forgot Password?</a><br/>
-                    <Link to={'/signup'}><span onClick={closeNav}>Create an account</span></Link>
+                    {/* <a href="#">Forgot Password?</a><br/> */}
+                    <Link to={'/signup'}><span onClick={closeNav}>Create an account?</span></Link>
                     </div>
                     :
                     <div>
@@ -142,7 +143,8 @@ function App() {
                     <div>
                       <br/>
                       <Link to="/Membership">Membership categories</Link><br/>
-                      <Link to="/paintinghired">Paintings Hired</Link>
+                      <Link to="/paintinghired">Paintings Hired</Link><br/>
+                      <Link to="/Hiringhistory">Rental History</Link>
                       <br/>
                       <br/>
                       <p className="Profile">
@@ -172,6 +174,7 @@ function App() {
                 <Route path="/ownedpaintings" component={OwnedPaintings}/>
                 <Route path="/rentpainting" component={RentPainting}/>
                 <Route path="/paintinghired" component={PaintingHired}/>
+                <Route path="/Hiringhistory" component={HiringHistory}/>
                 <Route path="/Membership" component={Categories}/>
             </div>
         </main>    

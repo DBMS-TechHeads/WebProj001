@@ -221,11 +221,14 @@ mysqlConnection.connect((err)=> {
         const paintingid=req.body.paintingid;
         const returndate= req.body.returndate;
         const custid = ID;
-        if(returndate==""){
-            res.send({emptyfields:"Fill all fields!!"});
+        const pname = req.body.pname;
+        const image = req.body.image;
+        console.log(custid);
+        if(returndate=="" || custid===undefined){
+            res.send({emptyfields:"Please Log in or Fill all fields!!"});
         }
         else{
-            mysqlConnection.query("INSERT INTO hiringinfo (rentdate,returndate,paintingid,custid,Returned) values (?,?,?,?,'n')",[rentdate,returndate,paintingid,custid],
+            mysqlConnection.query("INSERT INTO hiringinfo (rentdate,returndate,paintingid,custid,Returned,paintingname,image) values (?,?,?,?,'n',?,?)",[rentdate,returndate,paintingid,custid,pname,image],
             (err,result)=>{
                 console.log(err);
                 if(result.length>0){
@@ -248,6 +251,36 @@ mysqlConnection.connect((err)=> {
          }
     
     });
+
+    app.get('/Hiringhistory',(req,res)=>{
+        mysqlConnection.query('SELECT * FROM hiringinfo where custid='+ID, (err, rows, fields) => {
+            if (!err)
+            res.json(rows);
+            else
+            console.log(err);
+            })
+    });
+
+    app.post('/return',(req,res)=>{
+        const billno = req.body.product;
+        console.log(billno.paintingid);
+            mysqlConnection.query("UPDATE hiringinfo set Returned='y' where Billno=?",[billno.BillNo],
+            (err,result)=>{
+                console.log(err);
+                    
+            
+            });
+            mysqlConnection.query("UPDATE painting set hired='n' where paintingid=?",[billno.paintingid],
+                (err,result)=>{
+                    console.log(err);
+                    
+                });
+            
+    
+    });
+
+
+
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
