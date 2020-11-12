@@ -39,6 +39,9 @@ function CreateAccount(props){
                 else if(response.data.pass){
                     alert("Ensure Password entered Matches!!!");
                 }
+                else if(response.data.phno){
+                    alert("Ensure to enter correct Phone number!!!");
+                }
                 else{
                   alert("Account Not Created");
                 }

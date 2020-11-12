@@ -86,6 +86,9 @@ mysqlConnection.connect((err)=> {
              else if(confirmpass!=password){
                 res.send({pass:"Ensure Password matches!!"});
              }
+             else if(phno.length<10){
+                res.send({phno:"Ensure Password matches!!"});
+             }
            else{
             console.log(type); if(type==="Rent Paintings"){
                 mysqlConnection.query("INSERT INTO customer (username,password,Fname,LName,phonenumber,address,dob,category,emailid,type) values (?,?,?,?,?,?,?,?,?,'Customer')",[username,password,Firstname,Lastname,phno,address,dob,category,emailid],
