@@ -68,6 +68,12 @@ function App() {
   const Logout = ()=>{
     setloginstatus("");
     setIDstatus("");
+    Axios.post('http://localhost:8080/logout',{
+      loginstatus:loginstatus,
+      IDstatus:IDstatus
+  }).then((response)=>{
+    
+  });
   }
 
   const openNav = ()=>{

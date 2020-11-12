@@ -227,7 +227,7 @@ mysqlConnection.connect((err)=> {
         const pname = req.body.pname;
         const image = req.body.image;
         console.log(custid);
-        if(returndate=="" || custid===undefined){
+        if(returndate=="" || custid===undefined || custid==="Customer" || custid==="Owner"){
             res.send({emptyfields:"Please Log in or Fill all fields!!"});
         }
         else{
@@ -278,6 +278,13 @@ mysqlConnection.connect((err)=> {
                     console.log(err);
                     
                 });
+            
+    
+    });
+
+    app.post('/logout',(req,res)=>{
+        ID = req.body.IDstatus;
+        console.log(ID);
             
     
     });
