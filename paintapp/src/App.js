@@ -164,7 +164,7 @@ function App() {
                       </p>
                     </div>
                     }
-                    <button id="logout" onClick={Logout}><a href="/">LogOut</a></button>
+                    <button id="logout" onClick={Logout}>LogOut</button>
                     </div>
               }
         </div>

@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const express = require('express');
 const bodyparser = require('body-parser');
 const cors= require("cors");
+var nodemailer = require('nodemailer');
 
 
 const app = express();
@@ -25,11 +26,26 @@ let year = date_ob.getFullYear();
 
 // prints date in YYYY-MM-DD format
 var rentdate = year + "-" + month + "-" + date;
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'masthanmasthi037@gmail.com',
+      pass: 'khasimkarimulla'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'masthanmasthi037@gmail.com',
+    to: '',
+    subject: 'Welcome to Paintorzo',
+    text: `YOU HAVE SUCCESSFULLY CREATED AN ACCOUNT!
+           Enjoy renting!`
+  };
 
 var mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'rohitsurya1234!',
+    password: 'Ammalove.3',
     database: 'newschema',
     multipleStatements: true
     });
@@ -80,6 +96,7 @@ mysqlConnection.connect((err)=> {
              const  type     = req.body.type;
              const category = req.body.category;
              const confirmpass = req.body.confirmpass;
+             mailOptions.to=emailid;
              if(username===""||password===""||type===""){
                 res.send({required:"Please Fill all fields"});
              }
@@ -98,6 +115,13 @@ mysqlConnection.connect((err)=> {
                     res.send(result)
                 }
                 else{
+                    transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      })
                     res.send({messages:"Account Created"})
                 }
             });
@@ -110,6 +134,13 @@ mysqlConnection.connect((err)=> {
                     res.send(result)
                 }
                 else{
+                    transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      })
                     res.send({messages:"Account Created"})
                 }
             });
@@ -126,6 +157,9 @@ mysqlConnection.connect((err)=> {
         //         });
 
         // });
+        
+          
+         
 
 
         app.post('/login',(req,res)=>{
@@ -157,6 +191,13 @@ mysqlConnection.connect((err)=> {
                             ID = result[0].ownerid;
                             console.log(ID);
                             res.send(result)
+                             transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          })
                         }
                         else{
                             res.send({messages:"Wrong USERNAME OR PASSWORD"})

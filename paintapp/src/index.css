@@ -330,7 +330,7 @@ margin: 0;
   text-decoration: none;
 
 }
-.sidebar #submit,#logout{
+.sidebar #submit{
   border:0;
   background: black;
   display:block;
@@ -350,6 +350,27 @@ margin: 0;
   background: green;
   letter-spacing: 2px;
 }
+.sidebar #logout{
+  border:0;
+  background: black;
+  display:block;
+  margin: 20px auto;
+  text-align: center;
+  border:2px solid green;
+  padding:14px 20px;
+  width:100px;
+  outline:none;
+  color:white;
+  border-radius: 24px;
+  transition:0.25s;
+  cursor : pointer;
+  letter-spacing: 1px;
+}
+.sidebar #logout:hover{
+  background: green;
+  letter-spacing: 2px;
+}
+
 .sidebar a{
   padding-left: 10px;
   text-decoration:none;
