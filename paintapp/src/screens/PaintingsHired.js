@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 // import data from '../data';
 import { Fade } from 'react-slideshow-image';
 import axios from 'axios';
-
+import ReactToPdf, {PrintContextConsumer} from 'react-to-pdf';
 
 function PaintingHired(props){
 
@@ -37,7 +37,11 @@ function PaintingHired(props){
       });
 };
 
- 
+const ref = React.createRef();
+const options = {
+  orientation: 'landscape',
+  format: [4,2]
+};   
       
       return <div>
 
@@ -59,6 +63,36 @@ function PaintingHired(props){
                         )
                 }
             </ul>
+                <br/>
+            <div ref={ref}>  
+            <h2>Paintings Currently Rented</h2>  
+            <table>
+              <tr>
+                <th>BillNo</th>
+                <th>PaintID</th>
+                <th>Rent Date</th>
+                <th>Return Date</th>
+                <th>Painting Name</th>
+              </tr>
+              {
+                 products.map(product=>
+                  <tr>
+                    <td>{product.BillNo}</td>
+                   <td>{product.paintingid}</td>
+                   <td>{product.rentdate}</td>
+                   <td>{product.returndate}</td>
+                   <td>{product.paintingname}</td>
+                  </tr>
+                 )
+              }
+            </table>
+            </div>
+            <br/>
+            {/* <ReactToPdf targetRef={ref} filename="Paintings_RENT_Bill.pdf" >
+        {({toPdf}) => (
+            <button id="submit" onClick={toPdf}>Generate pdf</button>
+        )}
+    </ReactToPdf> */}
 </div>
 
 }
