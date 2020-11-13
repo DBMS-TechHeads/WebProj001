@@ -20,6 +20,7 @@
     "react-scripts": "3.4.3",
     "react-slideshow-image": "^3.2.0",
     "react-to-pdf": "0.0.13",
+    "react-to-print": "^2.11.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
