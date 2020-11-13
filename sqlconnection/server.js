@@ -10,9 +10,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Defining Variables to use------------------------------------------------------------------------------------------
 var USRname;
 var Type;
 var ID;
+var EMAILID;
 let date_ob = new Date();
 
 // adjust 0 before single digit date
@@ -26,6 +28,8 @@ let year = date_ob.getFullYear();
 
 // prints date in YYYY-MM-DD format
 var rentdate = year + "-" + month + "-" + date;
+
+// MAIL OPTION--------------------------------------------------------------------------------------------------------
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -37,15 +41,25 @@ var transporter = nodemailer.createTransport({
   var mailOptions = {
     from: 'masthanmasthi037@gmail.com',
     to: '',
-    subject: 'Welcome to Paintorzo',
-    text: `YOU HAVE SUCCESSFULLY CREATED AN ACCOUNT!
+    subject: 'Welcome to Paintorzo[noreply]',
+    text: `Dear User,
+           YOU HAVE SUCCESSFULLY CREATED AN ACCOUNT!
            Enjoy renting!`
   };
 
+  var mailUpload = {
+    from: 'masthanmasthi037@gmail.com',
+    to: '',
+    subject: 'Paintorzo[noReply]',
+    text: `Dear User,
+           
+           YOU HAVE SUCCESSFULLY Added your Painting to our Gallery!!`
+  };
+// MYSQL connection---------------------------------------------------------------------------------------------------------------
 var mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Ammalove.3',
+    password: 'rohitsurya1234!',
     database: 'newschema',
     multipleStatements: true
     });
@@ -65,6 +79,7 @@ mysqlConnection.connect((err)=> {
             console.log(err);
             })
             } );
+// ----------------------------------------------------------------------------------------------------------------------------------
 
         app.get('/paintings/:id',(req,res)=>{
             mysqlConnection.query('SELECT * FROM painting where paintingid='+mysql.escape(req.params.id), (err, rows, fields) => {
@@ -121,7 +136,7 @@ mysqlConnection.connect((err)=> {
                         } else {
                           console.log('Email sent: ' + info.response);
                         }
-                      })
+                      });
                     res.send({messages:"Account Created"})
                 }
             });
@@ -134,13 +149,15 @@ mysqlConnection.connect((err)=> {
                     res.send(result)
                 }
                 else{
+                    
                     transporter.sendMail(mailOptions, function(error, info){
                         if (error) {
                           console.log(error);
                         } else {
                           console.log('Email sent: ' + info.response);
                         }
-                      })
+                      });
+                      
                     res.send({messages:"Account Created"})
                 }
             });
@@ -175,7 +192,9 @@ mysqlConnection.connect((err)=> {
                     USRname = username;
                     Type = result[0].type;
                     ID = result[0].custid;
+                    EMAILID = result[0].emailid;
                     console.log(ID);
+                    console.log(EMAILID);
                      res.send(result)
                  }
                  else{
@@ -189,15 +208,10 @@ mysqlConnection.connect((err)=> {
                             USRname = username;
                             Type = result[0].type;
                             ID = result[0].ownerid;
+                            EMAILID = result[0].emailid;
                             console.log(ID);
+                            console.log(EMAILID);
                             res.send(result)
-                             transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-            }
-          })
                         }
                         else{
                             res.send({messages:"Wrong USERNAME OR PASSWORD"})
@@ -209,6 +223,7 @@ mysqlConnection.connect((err)=> {
     
             });
         });
+
         app.post('/uploadimage',(req,res)=>{
             const paintingname=req.body.paintingname;
             const artistname= req.body.artistname;
@@ -228,6 +243,15 @@ mysqlConnection.connect((err)=> {
                    res.send(result)
                }
                else{
+                
+                mailUpload.to = EMAILID;
+                transporter.sendMail(mailUpload, function(error, info){
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                  });
                    res.send({messages:"Uploaded Successfully!"})
                }
            });
@@ -268,7 +292,7 @@ mysqlConnection.connect((err)=> {
         const pname = req.body.pname;
         const image = req.body.image;
         console.log(custid);
-        if(returndate=="" || custid===undefined || custid==="Customer" || custid==="Owner"){
+        if(returndate=="" || custid===undefined || custid==="Customer" || custid==="Owner" || custid==""){
             res.send({emptyfields:"Please Log in or Fill all fields!!"});
         }
         else{
@@ -324,7 +348,7 @@ mysqlConnection.connect((err)=> {
     });
 
     app.post('/logout',(req,res)=>{
-        ID = req.body.IDstatus;
+        ID = '';
         console.log(ID);
             
     
