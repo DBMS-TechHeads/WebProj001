@@ -16,7 +16,7 @@ import Axios from 'axios';
 
 
 
-import { FaInstagramSquare, FaFacebook, FaGithub, FaTwitter, FaHome, FaSignInAlt, FaShoppingCart,FaInfoCircle} from 'react-icons/fa';
+import { FaInstagramSquare, FaFacebook, FaGithub, FaTwitter, FaHome, FaSignInAlt, FaPen,FaInfoCircle, FaUpload, FaHistory, FaListUl, FaAngleRight,FaGrinBeam,FaSignOutAlt} from 'react-icons/fa';
 import PaintingHired from './screens/PaintingsHired';
 import HiringHistory from './screens/HiringHistory';
 
@@ -124,11 +124,11 @@ function App() {
               }}/>
                     <button id="submit" onClick={login}>Submit</button><br/>
                     {/* <a href="#">Forgot Password?</a><br/> */}
-                    <Link to={'/signup'}><span onClick={closeNav}>Create an account?</span></Link>
+                    <Link to={'/signup'}><span onClick={closeNav}><FaPen/>&nbsp;Create an account?</span></Link>
                     </div>
                     :
                     <div>
-                    <h3 className="Login">Hey {loginstatus}!</h3>
+                    <h3 className="Login">Hey {loginstatus}!&nbsp;<FaGrinBeam/></h3>
                     {IDstatus==="Owner"?
                     <div>
                       <p className="Profile">
@@ -140,9 +140,9 @@ function App() {
                       <h4>Email ID: {emailStatus}</h4><br/>
 
                       </p>
-                      <Link to="/uploadpainting">Upload Painting</Link><br/>
-                    <Link to="/ownedpaintings">Owned Paintings</Link><br/>
-                    <Link to="/rentpainting">Paintings Rented</Link><br/>
+                      <Link to="/uploadpainting"><FaUpload/>&nbsp; Upload Painting</Link><br/>
+                    <Link to="/ownedpaintings"><FaListUl/>&nbsp; Owned Paintings</Link><br/>
+                    <Link to="/rentpainting"><FaAngleRight/>&nbsp; Owned Paintings Rented</Link><br/>
                     </div>
                       :
                     <div>
@@ -156,14 +156,14 @@ function App() {
                       <h4>Membership Type: {CATStatus}</h4><br/>
                       </p>
                       <br/>
-                      <Link to="/Membership">Membership categories</Link><br/>
-                      <Link to="/paintinghired">Paintings Hired</Link><br/>
-                      <Link to="/Hiringhistory">Rental History</Link>
+                      <Link to="/Membership"><FaAngleRight/>&nbsp; Membership categories</Link><br/>
+                      <Link to="/paintinghired"><FaListUl/>&nbsp; Paintings Hired</Link><br/>
+                      <Link to="/Hiringhistory"><FaHistory/>&nbsp; Rental History</Link>
                       <br/>
                       <br/>
                     </div>
                     }
-                    <Link to="/"><button id="logout" onClick={Logout}>LogOut</button></Link>
+                    <Link to="/"><button id="logout" onClick={Logout}><FaSignOutAlt/>LogOut</button></Link>
                     </div>
               }
         </div>
@@ -186,10 +186,10 @@ function App() {
 
         <div id="popup">
           <h3>ABOUT US</h3>
-          <div className="rohit"><img src="/images/rohit.jpg"></img><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></span></div>
-          <div className="rohit"><img src="/images/manikanta.png"></img><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></span></div>
-          <div className="rohit"><img src="/images/matan.png"></img><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></span></div>
-          <div className="rohit"><img src="/images/mohan.png"></img><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></span></div>
+          <div className="rohit"><img src="/images/rohit.jpg"></img><span><p><h4>A T Rohit Surya</h4><i><h5>atinvento@gmail.com</h5></i></p></span></div>
+          <div className="rohit"><img src="/images/manikanta.png"></img><span><p><h4>M Manikanta Reddy</h4><i><h5>marri.mani2000@gmail.com</h5></i></p></span></div>
+          <div className="rohit"><img src="/images/matan.png"></img><span><p><h4>Masthan</h4><i><h5>masthanirfan037@gmail.com</h5></i></p></span></div>
+          <div className="rohit"><img src="/images/mohan.png"></img><span><p><h4>R Mohan</h4><i><h5>mohanreddybathuni@gmail.com</h5></i></p></span></div>
           <a href="#aboutussec" onClick={toggle} className="dismiss">DISMISS</a>
           </div>
 

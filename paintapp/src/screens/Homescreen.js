@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import BarChart from 'react-bar-chart';
+import { FaFilePdf} from 'react-icons/fa';
 
 function Homescreen(props){
 
@@ -181,11 +182,11 @@ const margin = {top: 20, right: 20, bottom: 30, left: 40};
             <h5>If intersested can contribute with no additional costs.</h5>
             <h5>From Paintorzo team....</h5><br/>
             <h5>Contact us for futher queries</h5>
-            <h6>emailid: masthanmasthi037@gmail.com</h6>
+            <h5><i>emailid: masthanmasthi037@gmail.com</i></h5>
             </div>
             <br/>
             
-            <button id="pdfgen" onClick={handlePrint}>Generate pdf</button>
+            <button id="pdfgen" onClick={handlePrint}><FaFilePdf/>Generate pdf</button>
             </div>
 
            
