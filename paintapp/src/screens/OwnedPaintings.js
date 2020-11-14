@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 // import data from '../data';
 import { Fade } from 'react-slideshow-image';
 import axios from 'axios';
-
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 
 function OwnedPaintings(props){
 
@@ -18,7 +19,15 @@ function OwnedPaintings(props){
     return ()=>{
 
     };
-  },[])
+  },[]);
+
+const ref = useRef();
+const options = {
+  orientation: 'landscape'
+};   
+const handlePrint = useReactToPrint({
+  content: () => ref.current,
+});
 
  
       
@@ -42,6 +51,46 @@ function OwnedPaintings(props){
                         )
                 }
             </ul>
+
+            {products.length==0?    
+            <h2>No Paintings Hired</h2>
+            :
+            <div>
+            <div className="BillPDF" ref={ref}>
+            <h3>Paintorzo</h3><br/>
+            <h4>Paintings Owned</h4>
+            <h5>List of painting owned / uploaded to Paintirzo Gallery</h5>
+            
+            <table>
+              <tr>
+                <th>Painting Name</th>
+                <th>Artist</th>
+                <th>Theme</th>
+                <th>Price</th>
+                <th>Hired(y/n)</th>
+              </tr>
+              {
+                 products.map(product=>
+                  <tr>
+                    <td>{product.paintingname}</td>
+                   <td>{product.artistname}</td>
+                   <td>{product.theme}</td>
+                   <td>{product.rentalcost}</td>
+                   <td>{product.hired}</td>
+                  </tr>
+                 )
+              }
+            </table>
+            <br/>
+            <h5>From Paintorzo team....</h5><br/>
+            <h5>Contact us for futher queries</h5>
+            <h6>emailid: masthanmasthi037@gmail.com</h6>
+            </div>
+            <br/>
+            
+            <button id="pdfgen" onClick={handlePrint}>Generate pdf</button>
+            </div>
+            }
 </div>
 
 }

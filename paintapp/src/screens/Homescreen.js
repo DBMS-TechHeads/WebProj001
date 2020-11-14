@@ -3,23 +3,69 @@ import {Link} from 'react-router-dom';
 // import data from '../data';
 import { Fade } from 'react-slideshow-image';
 import axios from 'axios';
-
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import BarChart from 'react-bar-chart';
 
 function Homescreen(props){
 
   const [products, setProduct] = useState([]);
-  const [theme, setsearch] = useState([""]);
-
+  const [customers, setCustomer] = useState([]);
+  const [owners, setOwner] = useState([]);
+  const datas = 
+  [
+    {text: 'Customer',value:customers.length},
+    {text: 'Owner',value:owners.length}
+  ]
+  
   useEffect(()=>{
     const fetchData = async() =>{
       const {data} = await axios.get("/paintings");
+      console.log(data);
       setProduct(data);
+      
     }
     fetchData();
     return ()=>{
 
     };
-  },[])
+  },[]);
+
+  useEffect(()=>{
+    const fetchData = async() =>{
+    
+      const {data} = await axios.get("/customers");
+      console.log(data);
+      setCustomer(data);
+    }
+    fetchData();
+    return ()=>{
+
+    };
+  },[]);
+
+  useEffect(()=>{
+    const fetchData = async() =>{
+    
+      const {data} = await axios.get("/countOwner");
+      setOwner(data);
+    }
+    fetchData();
+    return ()=>{
+
+    };
+  },[]);
+
+
+  const ref = useRef();
+const options = {
+  orientation: 'landscape'
+};   
+const handlePrint = useReactToPrint({
+  content: () => ref.current,
+});
+
+const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
     const fadeImages = [
         'images/pic.jpg',
@@ -38,7 +84,9 @@ function Homescreen(props){
         onChange: (oldIndex, newIndex) => {
           console.log(`fade transition from ${oldIndex} to ${newIndex}`);
         }
-      }
+      };
+
+     
       
       return <div>
           <div className="slide-container">
@@ -90,6 +138,57 @@ function Homescreen(props){
                         )
                 }
             </ul>
+
+            <br/><br/><br/>
+            <div>
+            <div className="BillPDF" ref={ref}>
+            <h3>Paintorzo</h3><br/>
+            <h4>Paintings Gallery</h4>
+            <h5>List of painting available in our Paintirzo Gallery</h5>
+            
+            <table>
+              <tr>
+                <th>Painting Name</th>
+                <th>Artist</th>
+                <th>Theme</th>
+                <th>Price</th>
+                <th>Hired(y/n)</th>
+              </tr>
+              {
+                 products.map(product=>
+                  <tr>
+                    <td>{product.paintingname}</td>
+                   <td>{product.artistname}</td>
+                   <td>{product.theme}</td>
+                   <td>{product.rentalcost}</td>
+                   <td>{product.hired}</td>
+                  </tr>
+                 )
+              }
+            </table>
+            <br/>
+            <h4>Customer and Owner count</h4>
+            <div> 
+                <BarChart ylabel='Number of Customers or Owners' 
+                  width={500}
+                  height={500}
+                  margin={margin}
+                  data={datas}
+                  />
+            </div>
+            <h5>Also create an account today for free and explore our services...</h5>
+            <br/>
+            <h5>If intersested can contribute with no additional costs.</h5>
+            <h5>From Paintorzo team....</h5><br/>
+            <h5>Contact us for futher queries</h5>
+            <h6>emailid: masthanmasthi037@gmail.com</h6>
+            </div>
+            <br/>
+            
+            <button id="pdfgen" onClick={handlePrint}>Generate pdf</button>
+            </div>
+
+           
 </div>
 
 }

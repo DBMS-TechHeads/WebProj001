@@ -74,7 +74,7 @@ const handlePrint = useReactToPrint({
             <div className="BillPDF" ref={ref}>
             <h3>Paintorzo</h3><br/>
             <h4>Paintings currently Hired</h4>
-            
+            <h5>List of painting rented from our painting gallery...</h5>
             <table>
               <tr>
                 <th>BillNo</th>
@@ -95,6 +95,10 @@ const handlePrint = useReactToPrint({
                  )
               }
             </table>
+            <br/>
+            <h5>From Paintorzo team....</h5><br/>
+            <h5>Contact us for futher queries</h5>
+            <h6>emailid: masthanmasthi037@gmail.com</h6>
             </div>
             <br/>
             

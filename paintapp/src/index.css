@@ -378,10 +378,11 @@ margin: 0;
   text-decoration:none;
   font-size: 15px;
   line-height:20px;
-  color: wheat;
+  font-weight: bold;
+  color: rgb(240, 224, 80);
 }
 .sidebar a:hover{
-  color:black;
+  color:rgba(41, 40, 40, 0.747);
   text-decoration: none;
 }
 
@@ -421,11 +422,15 @@ margin: 0;
   box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
+.Profile h4{
+  color: white;
+}
+
 .content h2{
-  padding-left: 42%;
+  padding-left: 41%;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  color: #9e0084;
+  color: #ffffffd0;
   font-size: 5rem;
   font-family: 'Gochi Hand', cursive;
 }
@@ -448,7 +453,7 @@ margin: 0;
 }
 
 .products li:hover{
-  background-color: rgb(223, 221, 219);
+  background-color: rgba(223, 221, 219, 0.493);
 }
 
 .product {
@@ -1067,11 +1072,11 @@ font-size: 2rem;
 /* BillPDF generation-------------------------------------------------------------------------------------- */
 
 .Billhead {
-  padding-left: 42%;
+  padding-left: 39%;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  color: #9e0084;
-  font-size: 3rem;
+  color: #ffffff93;
+  font-size: 3.5rem;
   font-family: 'Gochi Hand', cursive;
 }
 

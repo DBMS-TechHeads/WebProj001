@@ -59,7 +59,7 @@ var transporter = nodemailer.createTransport({
 var mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Ammalove.3',
+    password: 'rohitsurya1234!',
     database: 'newschema',
     multipleStatements: true
     });
@@ -71,6 +71,8 @@ mysqlConnection.connect((err)=> {
         console.log('Connection Failed!'+ JSON.stringify(err,undefined,2));
         });
 
+        
+// ----------------------------------------------------------------------------------------------------------------------------------
         app.get('/paintings' , (req, res) => {
             mysqlConnection.query('SELECT * FROM painting', (err, rows, fields) => {
             if (!err)
@@ -79,7 +81,24 @@ mysqlConnection.connect((err)=> {
             console.log(err);
             })
             } );
-// ----------------------------------------------------------------------------------------------------------------------------------
+
+        app.get('/customers' , (req, res) => {
+            mysqlConnection.query('SELECT * FROM customer', (err, rows, fields) => {
+            if (!err)
+            res.json(rows);
+            else
+            console.log(err);
+            })
+            } );
+
+        app.get('/countOwner' , (req, res) => {
+            mysqlConnection.query('SELECT * FROM owner', (err, rows, fields) => {
+            if (!err)
+            res.json(rows);
+            else
+            console.log(err);
+            })
+            } );
 
         app.get('/paintings/:id',(req,res)=>{
             mysqlConnection.query('SELECT * FROM painting where paintingid='+mysql.escape(req.params.id), (err, rows, fields) => {
