@@ -128,13 +128,9 @@ function App() {
                     </div>
                     :
                     <div>
-                    <h3 className="Login">Hi {loginstatus}</h3>
+                    <h3 className="Login">Hey {loginstatus}!</h3>
                     {IDstatus==="Owner"?
                     <div>
-                    <Link to="/uploadpainting">Upload Painting</Link><br/>
-                    <Link to="/ownedpaintings">Owned Paintings</Link><br/>
-                    <Link to="/rentpainting">Paintings Rented</Link><br/>
-                    <br/>
                       <p className="Profile">
                       <h3>Profile</h3><br/>
                       <h4>First Name: {Fnamestatus}</h4><br/>
@@ -144,15 +140,12 @@ function App() {
                       <h4>Email ID: {emailStatus}</h4><br/>
 
                       </p>
+                      <Link to="/uploadpainting">Upload Painting</Link><br/>
+                    <Link to="/ownedpaintings">Owned Paintings</Link><br/>
+                    <Link to="/rentpainting">Paintings Rented</Link><br/>
                     </div>
                       :
                     <div>
-                      <br/>
-                      <Link to="/Membership">Membership categories</Link><br/>
-                      <Link to="/paintinghired">Paintings Hired</Link><br/>
-                      <Link to="/Hiringhistory">Rental History</Link>
-                      <br/>
-                      <br/>
                       <p className="Profile">
                       <h3>Profile</h3><br/>
                       <h4>First Name: {Fnamestatus}</h4><br/>
@@ -162,6 +155,12 @@ function App() {
                       <h4>Email ID: {emailStatus}</h4><br/>
                       <h4>Membership Type: {CATStatus}</h4><br/>
                       </p>
+                      <br/>
+                      <Link to="/Membership">Membership categories</Link><br/>
+                      <Link to="/paintinghired">Paintings Hired</Link><br/>
+                      <Link to="/Hiringhistory">Rental History</Link>
+                      <br/>
+                      <br/>
                     </div>
                     }
                     <Link to="/"><button id="logout" onClick={Logout}>LogOut</button></Link>

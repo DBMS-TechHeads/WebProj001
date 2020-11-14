@@ -39,7 +39,8 @@ margin: 0;
    /* Navbar-------------------------------------------------------------------------------------- */
 .navbar{
     grid-area: navbar;
-    background-color:black;
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
     color: #ffffff;
     display: flex;
     justify-content: space-between;
@@ -78,7 +79,7 @@ margin: 0;
   color: white;
   font-size: 1.7rem;
   font-weight: bold;
-  background-color: black;
+  background-color:  #04619f;
   border: none;
   outline: none;
   padding-bottom: 1rem;
@@ -256,11 +257,10 @@ margin: 0;
 /* Signin -------------------------------------------------------------------------------------------------*/
 .Login{
   padding-top: 1rem;
-  font-size: 2rem;
-  background: #E27D60;
-  color: yellow;
+  font-size: 2rem;;
+  color: white;
   height: 5rem;
-  padding-left: 10rem;
+  padding-left: 8rem;
 }
 .closebtn{
   color: rosybrown;
@@ -378,10 +378,10 @@ margin: 0;
   text-decoration:none;
   font-size: 15px;
   line-height:20px;
-  color: rgb(175, 233, 175);
+  color: wheat;
 }
 .sidebar a:hover{
-  color:yellowgreen;
+  color:black;
   text-decoration: none;
 }
 
@@ -393,7 +393,8 @@ margin: 0;
   z-index: 1;
   top: 0;
   right: 0;
-  background-color:black;
+  background-color: #000000;
+  background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 50px;
@@ -401,12 +402,23 @@ margin: 0;
 }
 
 .Profile{
-  background: #C38D9E;
-  padding: 1rem;
+  padding: 1.5rem;
+  color:black;
+  border-radius: 10px;
 }
 
-.Profile h3, h4{
-  color: #2C3531;
+.Profile h3{
+  border:0;
+  display:block;
+  margin: 20px auto;
+  text-align: center;
+  padding:14px 20px;
+  width:150px;
+  border:2px solid black;
+  outline:none;
+  color:#ecc19c;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .content h2{
@@ -962,6 +974,7 @@ font-size: 2rem;
   border-radius: 24px;
 }
 
+
 /* PaintingsHired-------------------------------------------------------------------------------------------------- */
 
 .bill {
@@ -981,7 +994,7 @@ font-size: 2rem;
   padding: 1rem;
   flex: 0 1 34rem;
   margin: 2rem;
-  height: 44rem;
+  height: 47rem;
   border: 0.1rem #c0c0c0 solid;
   border-radius: 1rem;
   background-color:	#ffffffbd;
@@ -996,9 +1009,25 @@ font-size: 2rem;
 }
 
 .bill .return{
-  margin-top: 1rem;
-  background-color: rgb(197, 36, 36);
-  color: white;
+  border:0;
+  background: black;
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  border:2px solid green;
+  padding:14px 20px;
+  width:100px;
+  outline:none;
+  color:white;
+  border-radius: 24px;
+  transition:0.25s;
+  cursor : pointer;
+  letter-spacing: 1px;
+}
+.bill .return:hover{
+  background: green;
+  letter-spacing: 1.5px;
+
 }
 
 /* OwnerPainting------------------------------------------------------------- */
@@ -1056,7 +1085,7 @@ font-size: 2rem;
   background-color: rgba(228, 228, 228, 0.705);
 }
 
-.BillPDF h2{
+.BillPDF h3{
   color:orange;
   font-size: 2rem;
   font-weight: bold;
@@ -1092,16 +1121,23 @@ td{
 tr:hover {background-color: #eec8c8;}
 
 #pdfgen{
-  margin-left: 2rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: rgb(197, 36, 36);
-  color: white;
-  font-size: 1rem;
+  border:0;
+  background: black;
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  border:2px solid green;
+  padding:14px 20px;
+  width:100px;
+  outline:none;
+  color:white;
+  border-radius: 24px;
+  transition:0.25s;
+  cursor : pointer;
+  letter-spacing: 1px;
 }
 
 #pdfgen:hover{
   background-color: rgb(129, 9, 9);
+  letter-spacing: 1.5px;
 }
