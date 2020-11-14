@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Patrick+Hand&family=Permanent+Marker&display=swap');
+
 html{
   font-size: 62.5%;
   box-sizing: border-box;
@@ -121,7 +123,7 @@ margin: 0;
 
 }
 
-/* slideshow image */
+/* slideshow image -------------------------------------------------------------------------------------------*/
 
 .slide-container {
   width: 50rem;
@@ -251,7 +253,7 @@ margin: 0;
 }
 
 
-/* Signin */
+/* Signin -------------------------------------------------------------------------------------------------*/
 .Login{
   padding-top: 1rem;
   font-size: 2rem;
@@ -408,7 +410,12 @@ margin: 0;
 }
 
 .content h2{
-  padding-left: 45%;
+  padding-left: 42%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: #9e0084;
+  font-size: 5rem;
+  font-family: 'Gochi Hand', cursive;
 }
 
 .products {
@@ -421,12 +428,17 @@ margin: 0;
   list-style-type: none;
   padding: 1rem;
   flex: 0 1 34rem;
-  margin: 2rem;
+  margin: 1rem;
   height: 45rem;
   border: 0.1rem #c0c0c0 solid;
-  border-radius: 1rem;
-  background-color:	#D3D3D3;
+  /* border-radius: 1rem; */
+  background-color:rgb(251,242,233);
 }
+
+.products li:hover{
+  background-color: rgb(223, 221, 219);
+}
+
 .product {
   display: flex;
   flex-direction: column;
@@ -437,9 +449,11 @@ margin: 0;
   max-width: 20rem;
   max-height: 20rem;
 }
-.paint-name {
+.paint-name a {
+  color: rgb(0, 0, 179);
   font-size: 2rem;
   font-weight: bold;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .paint-price {
@@ -803,7 +817,7 @@ a:hover{
 
 
 
-/* Uploadpainting */
+/* Uploadpainting -------------------------------------------------------------------------------------------------------*/
 .owner input[type="text"]{
   border:0;
   background: whitesmoke;
@@ -967,10 +981,10 @@ font-size: 2rem;
   padding: 1rem;
   flex: 0 1 34rem;
   margin: 2rem;
-  height: 42rem;
+  height: 44rem;
   border: 0.1rem #c0c0c0 solid;
   border-radius: 1rem;
-  background-color:	#ffffff;
+  background-color:	#ffffffbd;
 }
 .billno{
   color:black;
@@ -1009,7 +1023,7 @@ font-size: 2rem;
   height: 40rem;
   border: 0.1rem #c0c0c0 solid;
   border-radius: 1rem;
-  background-color:	#b8b8b896;
+  background-color:	#d8d7d769;
 }
 .paint-artist {
   color:black;
@@ -1019,4 +1033,75 @@ font-size: 2rem;
  .paint-theme {
   color:black;
   font-size: 1.5rem;
+}
+
+/* BillPDF generation-------------------------------------------------------------------------------------- */
+
+.Billhead {
+  padding-left: 42%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: #9e0084;
+  font-size: 3rem;
+  font-family: 'Gochi Hand', cursive;
+}
+
+.BillPDF{
+  margin-top: 2rem;
+  border-radius: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 2rem;
+  width: auto;
+  background-color: rgba(228, 228, 228, 0.705);
+}
+
+.BillPDF h2{
+  color:orange;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration:none;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.BillPDF table{
+  
+  width: 60rem;
+  height: 20rem;
+  border: 0.2rem solid black;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #dbd8d8}
+
+th {
+  background-color: #292728;
+  color: white;
+  font-size: 1.5rem;
+}
+
+td{
+  font-size: 1.2rem;
+}
+
+tr:hover {background-color: #eec8c8;}
+
+#pdfgen{
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgb(197, 36, 36);
+  color: white;
+  font-size: 1rem;
+}
+
+#pdfgen:hover{
+  background-color: rgb(129, 9, 9);
 }

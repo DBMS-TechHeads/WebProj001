@@ -48,7 +48,7 @@ const handlePrint = useReactToPrint({
       
       return <div>
 
-          <h2>Paintings Currently Rented</h2>
+          <h3 className="Billhead">Paintings Currently Rented</h3>
           
         <ul className="bill">
                 {
@@ -67,9 +67,15 @@ const handlePrint = useReactToPrint({
                 }
             </ul>
                 <br/>
+            {products.length==0?    
+            <h2>No Paintings Hired</h2>
+            :
+            <div>
+            <div className="BillPDF" ref={ref}>
+            <h3>Paintorzo</h3><br/>
+            <h4>Paintings currently Hired</h4>
             
-            <h2>Paintings Currently Rented</h2>  
-            <table ref={ref}>
+            <table>
               <tr>
                 <th>BillNo</th>
                 <th>PaintID</th>
@@ -89,11 +95,12 @@ const handlePrint = useReactToPrint({
                  )
               }
             </table>
-            
+            </div>
             <br/>
             
-            <button id="submit" onClick={handlePrint}>Generate pdf</button>
-      
+            <button id="pdfgen" onClick={handlePrint}>Generate pdf</button>
+            </div>
+            }
 </div>
 
 }
