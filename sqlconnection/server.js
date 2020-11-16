@@ -59,7 +59,7 @@ var transporter = nodemailer.createTransport({
 var mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'rohitsurya1234!',
+    password: 'Ammalove.3',
     database: 'newschema',
     multipleStatements: true
     });
